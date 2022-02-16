@@ -6,3 +6,4 @@ const kLightPrimaryColor = Color(0xffcfd8dc);
 const kSecondaryColor = Color(0xffcddc39);
 const kTextColor = Color(0xffffffff);
 const kSecondaryTextColor = Color(0xff757575);
+const kDangerColor = Color(0xC5FC1707);
