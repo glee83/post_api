@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:post_app/route/route.dart';
-import 'package:post_app/route/route_names.dart';
-import './route/route.dart';
-// import 'package:post_app/constants/strings.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:post_app/routes/app_routes.dart';
+import 'package:post_app/screens/fav_todos_screen.dart';
+import 'package:post_app/screens/todo_home_screen.dart';
+
+import 'bloc/todo_cubit.dart';
+import 'bloc/todo_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +27,30 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      initialRoute: RouteNames.home,
-      onGenerateRoute: AppRouting.generateRoute,
+      initialRoute: AppRoutes.home,
+        onGenerateRoute: (setting) {
+          switch (setting.name) {
+            case (AppRoutes.home):
+              return MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                    create: (context) => TodoCubit(),
+                    child: const TodoHomeScreen(),
+                  ));
+              break;
+              case (AppRoutes.favorite):
+              return MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                    create: (context) => TodoCubit(),
+                    child: const FavTodoScreen(),
+                  ));
+              break;
+
+
+
+            default:
+              return MaterialPageRoute(builder: (context) => const TodoHomeScreen());
+          }
+        }
     );
   }
 }
