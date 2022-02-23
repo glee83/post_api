@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:post_app/constants/strings.dart';
-import 'package:post_app/screens/home_screen.dart';
+import 'package:post_app/route/route.dart';
+import 'package:post_app/route/route_names.dart';
+import './route/route.dart';
+// import 'package:post_app/constants/strings.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const HomeScreen(title: 'List App Home Page'),
+      initialRoute: RouteNames.home,
+      onGenerateRoute: AppRouting.generateRoute,
     );
   }
 }
