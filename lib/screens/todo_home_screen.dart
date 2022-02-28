@@ -23,25 +23,7 @@ class _TodoHomeScreenState extends State<TodoHomeScreen> {
     // Step 1 : Find the specific object by the id in listOfTodos
     // Step 2 : Modifier the status of the isFav to true in listOfTodos
     // Step 3 : Emit the new list to the Cubit
-    Map<String, dynamic> itemList =
-        listOfTodos.firstWhere((item) => item["id"] == id);
-    int index = listOfTodos.indexWhere((item) => item["id"] == id);
-    var todo = {
-      "id": itemList["id"],
-      "title": itemList["title"],
-      "body": itemList["body"],
-      "isFav": true,
-    };
-    print("### THIS IS OBJECT INDEX : $index");
-    print("### THIS IS THE ITEM MODIFIED: $todo");
-    listOfTodos.removeAt(index);
-    listOfTodos.insert(index, todo);
-    print("### THIS IS THE NEW LIST: $listOfTodos");
-    //Add it to the Fav list
-    listOfFavTodo.add(todo);
-    print("### THIS IS THE FAV TODO LIST: $listOfFavTodo");
-
-    BlocProvider.of<TodoCubit>(context).addTodoToFav(listOfTodos);
+    BlocProvider.of<TodoCubit>(context).addTodoToFav(id);
   }
 
   void removeTodoToFav(int id) {
@@ -64,7 +46,6 @@ class _TodoHomeScreenState extends State<TodoHomeScreen> {
     listOfTodos.insert(index, todo);
     print("### THIS IS THE NEW LIST: $listOfTodos");
     BlocProvider.of<TodoCubit>(context).removeTodoToFav(listOfTodos);
-
   }
 
   @override
