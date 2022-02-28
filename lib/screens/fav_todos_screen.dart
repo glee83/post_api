@@ -13,6 +13,8 @@ class FavTodoScreen extends StatefulWidget {
 
 class _FavTodoScreenState extends State<FavTodoScreen> {
 
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -34,7 +36,7 @@ class _FavTodoScreenState extends State<FavTodoScreen> {
           Container(
             height: MediaQuery.of(context).size.height,
             child:
-            BlocBuilder<TodoCubit, TodoState>(builder: (context, state) {
+            BlocBuilder<TodoCubit, TodoState>(builder: (providerContext, state) {
               late List<dynamic> localTodoList;
               if (state is TodoFavScreenInitialState) {
                 localTodoList = listOfFavTodo;

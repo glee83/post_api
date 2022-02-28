@@ -45,10 +45,12 @@ class _MyAppState extends State<MyApp> {
                   ));
               break;
 
-
-
             default:
-              return MaterialPageRoute(builder: (context) => const TodoHomeScreen());
+              return MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                    create: (context) => TodoCubit(),
+                    child: const TodoHomeScreen(),
+                  ));
           }
         }
     );
