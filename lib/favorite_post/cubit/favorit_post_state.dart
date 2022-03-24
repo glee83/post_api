@@ -26,8 +26,8 @@ class DeleteFavoritePost extends FavoritePostState {
   DeleteFavoritePost({required this.deleteFavoPost});
 }
 
-// class AddToFavoritePost extends FavoritePostState {
-//   final PostModel postModel;
+class AddToFavoritePost extends FavoritePostState {
+  final PostModel postModel;
 
-//   AddToFavoritePost({required this.postModel});
-// }
+  AddToFavoritePost({required this.postModel});
+}

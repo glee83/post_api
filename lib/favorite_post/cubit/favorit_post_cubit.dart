@@ -31,14 +31,13 @@ class FavoritPostCubit extends Cubit<FavoritePostState> {
     }
   }
 
-  void deleteFavoPost(int id) {
+  void deleteFavoPost(int id, PostModel post) {
     emit(FavoritePostInitial());
     try {
       bool isFavorite = true;
-      final List<PostModel> post = apiService.getIsFavoritePost(isFavorite);
-      var newPost = post.where((element) => element.id != id);
+      // final List<PostModel> post = apiService.deleteIsFavoritePost(id, post) as List<PostModel>;
+      // var newPost = post.where((element) => element.id != id);
       // emit(DeleteFavoritePost(deleteFavoPost: newPost));
-
     } on Exception catch (err) {
       FavoritePostError(
         errorMessage:

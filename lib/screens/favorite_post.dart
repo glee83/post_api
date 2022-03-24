@@ -88,7 +88,7 @@ class _FavoritePostState extends State<FavoritePost> {
                     ),
                   ),
                   onDismissed: (direction) {
-                    ApiService.deleteIsFavoritePost(post.id, post);
+                    // ApiService.deleteIsFavoritePost(post.id, post);
 
                     setState(() {
                       ApiService.isFavoritePost;
@@ -102,10 +102,12 @@ class _FavoritePostState extends State<FavoritePost> {
                         onPressed: () {
                           setState(() {
                             ApiService.deleteIsFavoritePost(post.id, post);
+                            // BlocProvider.of<FavoritPostCubit>(context)
+                            //     .deleteFavoPost(post.id, post);
                           });
 
                           BlocProvider.of<FavoritPostCubit>(context)
-                              .getFavoPosts();
+                              .deleteFavoPost(post.id, post);
                           // print(post);
                         },
                         icon: const Icon(Icons.delete),
